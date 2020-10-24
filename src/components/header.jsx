@@ -151,33 +151,39 @@ export default function ElevateAppBar(props) {
         <Toolbar
           style={{
             display: "flex",
-            justifyContent: "flex-end",
+            justifyContent: "space-between",
             alignItems: "center",
+            padding: 20,
           }}
         >
-          {isDesktopOrLaptop ? (
-            HEADER.map((item) => (
-              <Button
-                color="secondary"
-                variant="text"
-                className={classes.button}
-              >
-                <Link
-                  activeClass="active"
-                  to={item.to}
-                  spy={true}
-                  smooth={true}
-                  duration={500}
+          <a href=".">
+            <img src={require("assets/logo.svg")} width={48} />
+          </a>
+          <div>
+            {isDesktopOrLaptop ? (
+              HEADER.map((item) => (
+                <Button
+                  color="secondary"
+                  variant="text"
+                  className={classes.button}
                 >
-                  {item.title}
-                </Link>
-              </Button>
-            ))
-          ) : (
-            <IconButton onClick={handleClick}>
-              <FiMenu size={28} color="white" />
-            </IconButton>
-          )}
+                  <Link
+                    activeClass="active"
+                    to={item.to}
+                    spy={true}
+                    smooth={true}
+                    duration={500}
+                  >
+                    {item.title}
+                  </Link>
+                </Button>
+              ))
+            ) : (
+              <IconButton onClick={handleClick}>
+                <FiMenu size={28} color="white" />
+              </IconButton>
+            )}
+          </div>
           <Popper
             open={!!anchorEl}
             anchorEl={anchorEl}

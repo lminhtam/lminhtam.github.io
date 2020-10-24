@@ -19,7 +19,8 @@ const homeStyles = makeStyles((theme) => ({
   },
   avatar: {
     width: "75%",
-    resize: "contain",
+    // resize: "contain",
+    height: "50%",
   },
   about: {
     display: "flex",
@@ -104,13 +105,14 @@ function About() {
             style={{ marginTop: 36 }}
           >
             <a
-              href="assets/CV_Luong_Minh_Tam.pdf"
+              href="https://drive.google.com/uc?export=download&id=1K_L0ivFe7DZtO6vUVhLwmnLgQJzsIuIv"
               download
               style={{
                 textDecoration: "none",
                 color: "white",
                 fontWeight: 700,
               }}
+              target="_blank"
             >
               Download CV
             </a>

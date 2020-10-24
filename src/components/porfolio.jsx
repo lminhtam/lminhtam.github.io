@@ -2,6 +2,7 @@ import { Container, Grid, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { COLOR } from "index";
 import React, { useState } from "react";
+import { useSpring, animated } from "react-spring";
 
 const homeStyles = makeStyles((theme) => ({
   root: {
@@ -22,7 +23,6 @@ const homeStyles = makeStyles((theme) => ({
   },
   paper: {
     width: "100%",
-    height: "100%",
     position: "absolute",
     bottom: 0,
     left: 0,
@@ -49,24 +49,48 @@ const PRODUCTS = [
     image: "lemon-aid.svg",
     description: "Recipe sharing platform",
     pos: "Front-end Developer",
+    link: "https://lemon-aid-cookbook.github.io/",
   },
   {
     title: "Dimo",
     image: "dimo.svg",
     description: "Ticket management website",
     pos: "Web Developer",
+    link: "https://tyt-dimove.github.io/",
   },
   {
     title: "Tickit",
     image: "tickit.svg",
     description: "Ticket selling mobile app",
     pos: "Mobile Developer",
+    link:
+      "https://drive.google.com/uc?export=download&id=1Fm7SMKW78LO8BpWxAVLZIsnp6rkIhrI-",
   },
 ];
 
 function Porfolio() {
   const classes = homeStyles();
-  const [hover, setHover] = useState(-1);
+  const [hover, setHover] = useState(null);
+
+  const AnimatedBox = (props) => {
+    const { item, hoverItem } = props;
+    const heightAnimated = useSpring({
+      height: "100%",
+      from: { height: "0%" },
+    });
+
+    return (
+      <animated.div className={classes.paper} style={heightAnimated}>
+        <Typography variant="h5" color="secondary">
+          <strong>{item.title}</strong>
+        </Typography>
+        <Typography color="secondary">{item.description}</Typography>
+        <div className={classes.line} />
+        <Typography color="secondary">{item.pos}</Typography>
+      </animated.div>
+    );
+  };
+
   return (
     <div className={classes.root} id="porfolio">
       <Container maxWidth="lg" className={classes.about}>
@@ -82,28 +106,21 @@ function Porfolio() {
         >
           {PRODUCTS.map((item, index) => (
             <Grid item xs={12} sm={6} md={6} lg={4}>
-              <div
-                style={{ position: "relative", borderRadius: 8 }}
-                onMouseEnter={() => setHover(index)}
-                onMouseLeave={() => setHover(-1)}
-              >
-                <img
-                  src={require(`assets/${item.image}`)}
-                  style={{ width: "100%", borderRadius: 8 }}
-                />
-                {hover === index && (
-                  <div className={classes.paper}>
-                    <Typography variant="h5" color="secondary">
-                      <strong>{item.title}</strong>
-                    </Typography>
-                    <Typography color="secondary">
-                      {item.description}
-                    </Typography>
-                    <div className={classes.line} />
-                    <Typography color="secondary">{item.pos}</Typography>
-                  </div>
-                )}
-              </div>
+              <a href={item.link} target="_black">
+                <div
+                  style={{ position: "relative", borderRadius: 8 }}
+                  onMouseEnter={() => setHover(index)}
+                  onMouseLeave={() => setHover(null)}
+                >
+                  <img
+                    src={require(`assets/${item.image}`)}
+                    style={{ width: "100%", borderRadius: 8 }}
+                  />
+                  {hover === index && (
+                    <AnimatedBox hoverItem={hover === index} item={item} />
+                  )}
+                </div>
+              </a>
             </Grid>
           ))}
         </Grid>

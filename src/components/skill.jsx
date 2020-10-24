@@ -62,7 +62,7 @@ const SKILLS = [
     value: 60,
   },
   {
-    title: "JAVA",
+    title: "ANDROID (JAVA)",
     value: 60,
   },
 ];
