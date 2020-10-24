@@ -80,7 +80,10 @@ function About() {
               </Typography>
               <Typography variant="body1">
                 <strong>Age:</strong>{" "}
-                {moment(new Date()).diff(moment("1999/11/24"), "years")}
+                {moment(new Date().getTime()).diff(
+                  moment("1999-11-24"),
+                  "years"
+                )}
               </Typography>
               <Typography variant="body1">
                 <strong>Phone:</strong> (+84) 076 7494 146
@@ -94,7 +97,7 @@ function About() {
                 <strong>Experience:</strong> 6 Months
               </Typography>
               <Typography variant="body1">
-                <strong>Skype:</strong> (+84) 076 7494 146
+                <strong>Skype:</strong> Tam Luong
               </Typography>
             </div>
           </div>
@@ -113,6 +116,7 @@ function About() {
                 fontWeight: 700,
               }}
               target="_blank"
+              rel="noopener noreferrer"
             >
               Download CV
             </a>

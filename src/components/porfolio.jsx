@@ -2,7 +2,7 @@ import { Container, Grid, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { COLOR } from "index";
 import React, { useState } from "react";
-import { useSpring, animated } from "react-spring";
+import { animated, useSpring } from "react-spring";
 
 const homeStyles = makeStyles((theme) => ({
   root: {
@@ -73,7 +73,7 @@ function Porfolio() {
   const [hover, setHover] = useState(null);
 
   const AnimatedBox = (props) => {
-    const { item, hoverItem } = props;
+    const { item } = props;
     const heightAnimated = useSpring({
       height: "100%",
       from: { height: "0%" },
@@ -106,7 +106,7 @@ function Porfolio() {
         >
           {PRODUCTS.map((item, index) => (
             <Grid item xs={12} sm={6} md={6} lg={4}>
-              <a href={item.link} target="_black">
+              <a href={item.link} target="_black" id={`pro-${item.title}`}>
                 <div
                   style={{ position: "relative", borderRadius: 8 }}
                   onMouseEnter={() => setHover(index)}
@@ -115,6 +115,7 @@ function Porfolio() {
                   <img
                     src={require(`assets/${item.image}`)}
                     style={{ width: "100%", borderRadius: 8 }}
+                    alt={item.title}
                   />
                   {hover === index && (
                     <AnimatedBox hoverItem={hover === index} item={item} />

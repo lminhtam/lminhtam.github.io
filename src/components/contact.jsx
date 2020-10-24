@@ -1,11 +1,32 @@
-import { Button, Container, TextField, Typography } from "@material-ui/core";
+import {
+  Button,
+  Container,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  Modal,
+  Paper,
+  TextField,
+  Typography,
+} from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { Formik } from "formik";
 import { COLOR } from "index";
-import React from "react";
+import React, { useState } from "react";
 import { FiMail, FiMapPin, FiPhoneCall } from "react-icons/fi";
 import { useMediaQuery } from "react-responsive";
 import * as yup from "yup";
+
+const paper = {
+  position: "absolute",
+  width: "40vw",
+  backgroundColor: "white",
+  padding: 24,
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+};
 
 const homeStyles = makeStyles((theme) => ({
   root: {
@@ -71,6 +92,34 @@ function Contact() {
   const classes = homeStyles();
   const helperTextStyle = helperTextStyles();
   const isDesktopOrLaptop = useMediaQuery({ minDeviceWidth: 1224 });
+  const [isShow, setIsShow] = useState(false);
+  const [info, setInfo] = useState("");
+
+  const handleSubmit = (values) => {
+    const templateId = "template_4zjuhwn";
+
+    sendFeedback(templateId, {
+      message: values.message,
+      from_name: values.name,
+      reply_to: values.email,
+      subject: values.subject,
+    });
+  };
+
+  const sendFeedback = (templateId, variables) => {
+    window.emailjs
+      .send("service_6vf1ur8", templateId, variables)
+      .then((res) => {
+        setInfo(
+          "Your message has been sent. I'll will respond as soon as I receive it."
+        );
+        setIsShow(true);
+      })
+      .catch((err) => {
+        setInfo("There is error while sending your message. Please try again.");
+        setIsShow(true);
+      });
+  };
 
   return (
     <div className={classes.root} id="contact">
@@ -128,7 +177,7 @@ function Contact() {
             }}
             isInitialValid={false}
             validationSchema={validationSchema}
-            onSubmit={(values) => console.log(values)}
+            onSubmit={(values) => handleSubmit(values)}
           >
             {({
               handleChange,
@@ -202,6 +251,8 @@ function Contact() {
                     variant="contained"
                     size="large"
                     style={{ marginTop: 16, fontWeight: 700 }}
+                    disabled={!isValid}
+                    onClick={handleSubmit}
                   >
                     Send Message
                   </Button>
@@ -211,6 +262,34 @@ function Contact() {
           </Formik>
         </div>
       </Container>
+      <Modal
+        open={isShow}
+        onClose={() => setIsShow(false)}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <Paper elevation={0} style={paper}>
+          <DialogTitle id="alert-dialog-title">Message</DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              {info}
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button
+              onClick={() => {
+                window.location.reload();
+                setIsShow(false);
+              }}
+              color="primary"
+              variant="contained"
+              autoFocus
+            >
+              OK
+            </Button>
+          </DialogActions>
+        </Paper>
+      </Modal>
     </div>
   );
 }

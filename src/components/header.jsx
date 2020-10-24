@@ -4,7 +4,6 @@ import {
   Fab,
   Grow,
   IconButton,
-  Menu,
   MenuItem,
   MenuList,
   Paper,
@@ -12,7 +11,7 @@ import {
   Zoom,
 } from "@material-ui/core";
 import AppBar from "@material-ui/core/AppBar";
-import { makeStyles, withStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
 import { COLOR } from "index";
@@ -61,38 +60,6 @@ function ScrollTop(props) {
     </Zoom>
   );
 }
-
-const StyledMenu = withStyles({
-  paper: {
-    border: "1px solid #d3d4d5",
-  },
-})((props) => (
-  <Menu
-    elevation={0}
-    getContentAnchorEl={null}
-    anchorOrigin={{
-      vertical: "bottom",
-      horizontal: "center",
-    }}
-    transformOrigin={{
-      vertical: "top",
-      horizontal: "center",
-    }}
-    style={{ backgroundColor: COLOR.carbon }}
-    {...props}
-  />
-));
-
-const StyledMenuItem = withStyles((theme) => ({
-  root: {
-    "&:focus": {
-      backgroundColor: theme.palette.primary.main,
-      "& .MuiListItemIcon-root, & .MuiListItemText-primary": {
-        color: theme.palette.common.white,
-      },
-    },
-  },
-}))(MenuItem);
 
 const HEADER = [
   {
@@ -157,7 +124,7 @@ export default function ElevateAppBar(props) {
           }}
         >
           <a href=".">
-            <img src={require("assets/logo.svg")} width={48} />
+            <img src={require("assets/logo.svg")} width={48} alt="logo" />
           </a>
           <div>
             {isDesktopOrLaptop ? (
@@ -166,6 +133,7 @@ export default function ElevateAppBar(props) {
                   color="secondary"
                   variant="text"
                   className={classes.button}
+                  id={`header-${item.to}`}
                 >
                   <Link
                     activeClass="active"
