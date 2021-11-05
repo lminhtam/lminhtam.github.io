@@ -61,7 +61,7 @@ function About() {
           <Typography variant="body1" className={classes.description}>
             My name is Minh Tam Luong. I'm a Front-end Developer based in Ho Chi
             Minh City, Vietnam, and I'm very passionate and dedicated to my
-            work. With 6 months experience as a React Native Developer, I have
+            work. With 2 years experience as a React Native Developer, I have
             acquired the skills necessary to learn and participate in building
             website with ReactJS. I also aim to be a Fullstack Developer.
           </Typography>
@@ -94,7 +94,7 @@ function About() {
                 <strong>Address:</strong> District 4, HCMC
               </Typography>
               <Typography variant="body1">
-                <strong>Experience:</strong> 6 Months
+                <strong>Experience:</strong> 2 Years
               </Typography>
               <Typography variant="body1">
                 <strong>Skype:</strong> Tam Luong

@@ -42,16 +42,32 @@ const BorderLinearProgress = withStyles((theme) => ({
 
 const SKILLS = [
   {
+    title: "TYPESCRIPT",
+    value: 90,
+  },
+  {
     title: "JAVASCRIPT",
-    value: 80,
+    value: 90,
+  },
+  {
+    title: "REACT NATIVE",
+    value: 50,
   },
   {
     title: "REACT JS",
-    value: 60,
+    value: 50,
   },
   {
     title: "NODE JS",
-    value: 50,
+    value: 40,
+  },
+  {
+    title: "ANDROID (JAVA)",
+    value: 60,
+  },
+  {
+    title: "ANDROID (KOTLIN)",
+    value: 60,
   },
   {
     title: "PYTHON",
@@ -59,10 +75,6 @@ const SKILLS = [
   },
   {
     title: "C#",
-    value: 60,
-  },
-  {
-    title: "ANDROID (JAVA)",
     value: 60,
   },
 ];

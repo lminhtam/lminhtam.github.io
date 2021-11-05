@@ -45,6 +45,13 @@ const homeStyles = makeStyles((theme) => ({
 
 const PRODUCTS = [
   {
+    title: "MAM",
+    image: "mam.svg",
+    description: "Recipe sharing platform",
+    pos: "Front-end Developer",
+    link: "https://mammam.me/",
+  },
+  {
     title: "Lemon-aid",
     image: "lemon-aid.svg",
     description: "Recipe sharing platform",
@@ -58,14 +65,14 @@ const PRODUCTS = [
     pos: "Web Developer",
     link: "https://tyt-dimove.github.io/",
   },
-  {
-    title: "Tickit",
-    image: "tickit.svg",
-    description: "Ticket selling mobile app",
-    pos: "Mobile Developer",
-    link:
-      "https://drive.google.com/uc?export=download&id=1Fm7SMKW78LO8BpWxAVLZIsnp6rkIhrI-",
-  },
+  // {
+  //   title: "Tickit",
+  //   image: "tickit.svg",
+  //   description: "Ticket selling mobile app",
+  //   pos: "Mobile Developer",
+  //   link:
+  //     "https://drive.google.com/uc?export=download&id=1Fm7SMKW78LO8BpWxAVLZIsnp6rkIhrI-",
+  // },
 ];
 
 function Porfolio() {

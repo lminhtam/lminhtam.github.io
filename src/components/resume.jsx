@@ -57,12 +57,16 @@ const RES = [
   {
     time: "September 2019 - December 2019",
     company: "Coderschool",
-    des:
-      "Participated as a Fresher React Native Developer in Developer Circles VietNam Innovation Challenge",
+    des: "Participated as a Fresher React Native Developer in Developer Circles VietNam Innovation Challenge",
   },
   {
     time: "November 2019 - July 2020",
     company: "Ban Vien Corporation",
+    des: "Participated in develop mobile app using React Native framework",
+  },
+  {
+    time: "November 2020 - Present",
+    company: "Hitek Technology Group",
     des: "Participated in develop mobile app using React Native framework",
   },
 ];
